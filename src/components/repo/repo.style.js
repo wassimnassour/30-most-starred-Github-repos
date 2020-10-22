@@ -5,6 +5,9 @@ export const RepoContainer = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   margin: 2rem;
+  @media screen and (max-width: 500px) {
+    margin: 2rem 1rem;
+  }
 `;
 export const RepoWrapper = styled.div`
   flex-basis: 28%;
@@ -15,13 +18,46 @@ export const RepoWrapper = styled.div`
   margin: 1rem;
   border-radius: 4px;
   box-shadow: 0 0 4px 0px #bfbfbf;
+  position: relative;
   .span-container {
     display: flex;
   }
-
   p {
     margin: 0.5rem 0;
     font-size: 0.9rem;
+    .userName {
+      font-weight: bold;
+    }
+  }
+  a {
+    display: none;
+  }
+  &:hover a {
+    position: absolute;
+    transition: translate 2s;
+    background: #272525f5;
+    color: white;
+    font-size: 1.6rem;
+    text-decoration: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: 1500px) {
+    flex-basis: 43%;
+  }
+  @media screen and (max-width: 1005px) {
+    flex-basis: 80%;
+  }
+  @media screen and (max-width: 500px) {
+    flex-basis: 97%;
+    margin: 1rem 0;
   }
 `;
 
@@ -40,8 +76,14 @@ export const RepoInfos = styled.div`
   flex-basis: 70%;
 `;
 export const UserName = styled.h2`
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   margin: 0 0 0.6rem;
+  @media screen and (max-width: 1005px) {
+    font-size: 1.4rem;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 1.2rem;
+  }
 `;
 export const Description = styled.p`
   font-size: 1rem;

@@ -41,7 +41,6 @@ function App() {
           setLoading(false);
         });
   }, [todayDate, page]);
-  console.log(page);
   return (
     <div className="App">
       <Header />

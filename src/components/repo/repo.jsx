@@ -1,4 +1,5 @@
 import React from "react";
+import { VscIssues ,VscStarEmpty } from "react-icons/vsc";
 import {
   RepoContainer,
   RepoWrapper,
@@ -16,6 +17,7 @@ const Repo = ({ repos }) => {
       {repos &&
         repos.map((_repo) => (
           <RepoWrapper key={_repo.id}>
+            <a href={_repo.html_url} >Click to visit the Repo</a>
             <AvatarContainer>
               <Avatar src={_repo.owner.avatar_url} />
             </AvatarContainer>
@@ -26,11 +28,10 @@ const Repo = ({ repos }) => {
                 .....
               </Description>
               <div className="span-container">
-                <Starts>Stars : {_repo.stargazers_count}</Starts>
-                <Issues>Issues : {_repo.open_issues}</Issues>
+                <Starts>Stars : {_repo.stargazers_count} <VscStarEmpty /></Starts>
+                <Issues> Issues : {_repo.open_issues} <VscIssues /></Issues>
               </div>
-              <p>Submitted 30 days ago by {_repo.owner.login}</p>
-
+              <p>Submitted 30 days ago by <span className="userName">{_repo.owner.login}</span></p>
             </RepoInfos>
           </RepoWrapper>
         ))}
