@@ -1,11 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Loader from "react-loader-spinner";
+
 import { Header, Repo } from "./components/index";
 function App() {
+  const [todayDate, setTodayDate] = useState("");
+  const [repos, setRepos] = useState(null);
+  function setDate() {
+    const date = new Date();
+    const day = date.getDate() - 1;
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const today = [year, month, day].join("-");
+    setTodayDate(today);
+  }
+
+  useEffect(() => {
+    setDate();
+    todayDate &&
+      axios
+        .get(
+          `https://api.github.com/search/repositories?q=created:>${todayDate}&sort=stars&order=desc&page=1`
+        )
+        .then((el) => {
+          const data = el.data.items;
+          setRepos(data);
+        });
+  }, [todayDate]);
+
   return (
     <div className="App">
       <Header />
       <main className="main">
-        <Repo />
+        {repos ? (
+          <Repo repos={repos} />
+        ) : (
+          <Loader
+            type="Ball-Triangle"
+            color="#00BFFF"
+            height={100}
+            width={100}
+            timeout={3000}
+            className="loader"
+          />
+        )}
       </main>
     </div>
   );

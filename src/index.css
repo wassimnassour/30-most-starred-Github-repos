@@ -19,7 +19,12 @@ code {
 }
 
 .main {
-  width: 1400px;
   height: 80rem;
   margin: 0 auto;
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

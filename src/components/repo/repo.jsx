@@ -10,29 +10,30 @@ import {
   Starts,
   Issues,
 } from "./repo.style";
-const Repo = () => {
+const Repo = ({ repos }) => {
   return (
     <RepoContainer>
-      <RepoWrapper>
-        <AvatarContainer>
-          <Avatar></Avatar>
-        </AvatarContainer>
-        <RepoInfos>
-          <UserName>Wassim</UserName>
-          <Description>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem,
-            dolore.
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem,
-            dolore.
-          </Description>
-          <div className="span-container">
-          <Starts>Stars : 15</Starts>
-          <Issues>Issues : 8</Issues>
-          </div>
-         
-        </RepoInfos>
-      </RepoWrapper>
+      {repos &&
+        repos.map((_repo) => (
+          <RepoWrapper key={_repo.id}>
+            <AvatarContainer>
+              <Avatar src={_repo.owner.avatar_url} />
+            </AvatarContainer>
+            <RepoInfos>
+              <UserName>{_repo.name}</UserName>
+              <Description>
+                {_repo.description ? _repo.description.substring(0, 80) : null}
+                .....
+              </Description>
+              <div className="span-container">
+                <Starts>Stars : {_repo.stargazers_count}</Starts>
+                <Issues>Issues : {_repo.open_issues}</Issues>
+              </div>
+              <p>Submitted 30 days ago by {_repo.owner.login}</p>
 
+            </RepoInfos>
+          </RepoWrapper>
+        ))}
     </RepoContainer>
   );
 };

@@ -7,15 +7,21 @@ export const RepoContainer = styled.div`
   margin: 2rem;
 `;
 export const RepoWrapper = styled.div`
-  flex-basis: 35%;
+  flex-basis: 28%;
   display: flex;
   align-items: center;
   height: 180px;
   padding: 1rem;
+  margin: 1rem;
   border-radius: 4px;
   box-shadow: 0 0 4px 0px #bfbfbf;
   .span-container {
     display: flex;
+  }
+
+  p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
   }
 `;
 
@@ -24,7 +30,6 @@ export const AvatarContainer = styled.div`
 `;
 
 export const Avatar = styled.img`
-  background: green;
   width: 100%;
   height: 150px;
   border: none;
@@ -35,7 +40,7 @@ export const RepoInfos = styled.div`
   flex-basis: 70%;
 `;
 export const UserName = styled.h2`
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin: 0 0 0.6rem;
 `;
 export const Description = styled.p`
