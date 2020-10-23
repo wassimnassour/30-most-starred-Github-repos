@@ -8,6 +8,8 @@ function App() {
   const [repos, setRepos] = useState(null);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  // this function for set date of today
   function setDate() {
     const date = new Date();
     const day = date.getDate() - 1;
@@ -17,11 +19,13 @@ function App() {
     setTodayDate(today);
   }
 
+  // this function for go to next page
   function nextPage() {
     setLoading(true);
     setPage(page + 1);
   }
 
+  // this function for go to prev page
   function prevPage() {
     if (page > 1) {
       setLoading(true);
@@ -30,6 +34,7 @@ function App() {
   }
   useEffect(() => {
     setDate();
+    // fetch data from github url
     todayDate &&
       axios
         .get(
@@ -55,7 +60,7 @@ function App() {
         ) : (
           <Loader
             type="Oval"
-            color="#00BFFF"
+            color="#2196f3"
             height={100}
             width={100}
             timeout={3000}
