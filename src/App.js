@@ -12,12 +12,13 @@ function App() {
   // this function for set date of today
   function setDate() {
     const date = new Date();
-    const day = date.getDate() - 1;
+    const day = date.getDate() - 1 < 10 ? `0${date.getDate() - 1}` :date.getDate() - 1 ;
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const today = [year, month, day].join("-");
     setTodayDate(today);
   }
+  console.log(todayDate, "date");
 
   // this function for go to next page
   function nextPage() {
@@ -42,6 +43,7 @@ function App() {
         )
         .then((el) => {
           const data = el.data.items;
+          console.log(el, "data");
           setRepos(data);
           setLoading(false);
         });
